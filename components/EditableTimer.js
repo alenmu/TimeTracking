@@ -12,6 +12,10 @@ export default class EditableTimer extends React.Component {
     this.openForm();
   };
 
+  handleRemovePress = () => {
+    this.removeTimer();
+  };
+
   handleFormClose = () => {
     this.closeForm();
   };
@@ -30,6 +34,8 @@ export default class EditableTimer extends React.Component {
   openForm = () => {
     this.setState({ editFormOpen: true });
   };
+
+  removerTimer = () => {};
 
   render() {
     const { id, title, project, elapsed, isRunning } = this.props;
@@ -54,6 +60,7 @@ export default class EditableTimer extends React.Component {
         elapsed={elapsed}
         isRunning={isRunning}
         onEditPress={this.handleEditPress}
+        onRemovePress={this.handleRemovePress}
       />
     );
   }
