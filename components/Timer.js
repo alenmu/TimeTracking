@@ -5,6 +5,12 @@ import { millisecondsToHuman } from "../utils/TimerUtils";
 import TimerButton from "./TimerButton";
 
 export default class Timer extends React.Component {
+  handleRemovePress = () => {
+    const { id, onRemovePress } = this.props;
+
+    onRemovePress(id);
+  };
+
   render() {
     const { elapsed, title, project, onEditPress, onRemovePress } = this.props;
     const elapsedString = millisecondsToHuman(elapsed);
@@ -20,7 +26,7 @@ export default class Timer extends React.Component {
             color="blue"
             small
             title="Remove"
-            onPress={onRemovePress}
+            onPress={this.handleRemovePress}
           />
         </View>
         <TimerButton color="#21BA45" title="Start" />
