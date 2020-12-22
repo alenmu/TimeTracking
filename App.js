@@ -27,6 +27,26 @@ export default class App extends React.Component {
     ],
   };
 
+  componentDidMount() {
+    const TIME_INTERVAL = 1000;
+    this.intervalId = setInterval(() => {
+      const { timers } = this.state;
+      this.setState({
+        timers: timers.map((timer) => {
+          const { elapsed, isRunning } = timer;
+          return {
+            ...timer,
+            elapsed: isRunning ? elapsed + TIME_INTERVAL : elapsed,
+          };
+        }),
+      });
+    }, TIME_INTERVAL);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
   handleRemovePress = (timerId) => {
     this.setState({
       timers: this.state.timers.filter((t) => t.id !== timerId),
