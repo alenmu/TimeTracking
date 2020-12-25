@@ -5,6 +5,9 @@ import TimerButton from "./TimerButton";
 import TimerForm from "./TimerForm";
 
 export default class ToggleableTimerForm extends React.Component {
+  static propTypes = {
+    onFormSubmit: PropTypes.func.isRequired,
+  };
   state = {
     isOpen: false,
   };
